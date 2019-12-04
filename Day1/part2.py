@@ -7,7 +7,7 @@ def calculateFuel(fuel):
         result += fuel
     return result
 
-file = open("input1.txt","r")
+file = open("input.txt","r")
 
 modules = file.readlines()
 result = 0

@@ -1,4 +1,4 @@
-with open("input.txt") as file:
+'''with open("input.txt") as file:
     text = file.read()
 
 code = [int(x) for x in text.split(',')]
@@ -16,4 +16,4 @@ while  not code[i] == 99:
     else:
         print("Something went wrong")
         exit()
-print(code[0])
+print(code[0])'''
