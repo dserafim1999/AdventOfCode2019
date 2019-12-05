@@ -3,6 +3,7 @@ r = [int(x) for x in file.read().split('-')]
 consecutive, adjacent = False, False
 passwords = 0
 
+
 for i in range(r[0],r[1] + 1):
     i = str(i)
     for j in range(1,6):
