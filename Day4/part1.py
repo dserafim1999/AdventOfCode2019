@@ -15,8 +15,8 @@ for i in range(r[0],r[1] + 1):
         if j == 5 and i[j-1] <= i[j]:
             adjacent = True
     if consecutive and adjacent:
+        print(i)
         passwords += 1 
     consecutive, adjacent = False, False
     
-
 print(passwords)
