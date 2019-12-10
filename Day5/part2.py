@@ -12,8 +12,7 @@ def instructions(modes, instruction, i):
     elif instruction == 3: 
         if modes[0] == 0: code[code[i+1]] = int(input())
     elif instruction == 4:
-        if modes[0] == 0: print(parameters[0])
-        elif modes[0] == 1: print(parameters[0])
+        print(parameters[0])
     elif instruction == 5:
         if parameters[0] != 0: return parameters[1]
         else: return i+3
