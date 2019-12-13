@@ -1,21 +1,16 @@
 import itertools
 
 def runIntcodeComputer(amp, i, phase = -1, value = -1, auto = False):
-    j = 1
     while not code[amp][i] == 99:
         modes = [int(i) for i in str(code[amp][i]//100)]
         instruction = code[amp][i]%100
         if auto:
             if instruction == 3:
-                if j == 1:
-                    inputAuto = phase
-                    i = runInstruction(amp, modes, instruction, i, auto, inputAuto)
-                    j +=1
-                    continue
-                else: 
-                    inputAuto = value
-                    i = runInstruction(amp, modes, instruction, i, auto, inputAuto)
-                    continue
+                if i == 0: inputAuto = phase
+                else: inputAuto = value
+                
+                i = runInstruction(amp, modes, instruction, i, auto, inputAuto)
+                continue
             elif instruction == 4:
                     output, i = runInstruction(amp, modes, instruction, i, auto)
                     return (output, i)
@@ -83,14 +78,13 @@ with open("input.txt") as file:
 code = [[int(x) for x in text.split(',')] for j in range(5)]
 signals = []
 
-#for phases in list(itertools.permutations([5,6,7,8,9])):
-i = 0
-phases = [9,8,7,6,5]
-output = 0
-indices = [0,0,0,0,0]
-while code[4][indices[4]] != 99:
-    output, indices[i] = runIntcodeComputer(i, indices[i], phases[i], output, True)
-    i = (i+1)%5
-signals.append(output)
+for phases in list(itertools.permutations([5,6,7,8,9])):
+    i = 0
+    output = 0
+    indices = [0,0,0,0,0]
+    while code[4][indices[4]] != 99:
+        output, indices[i] = runIntcodeComputer(i, indices[i], phases[i], output, True)
+        i = (i+1)%5
+    signals.append(output)
 
-print(signals)
+print(max(signals))
